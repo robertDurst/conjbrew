@@ -1,10 +1,10 @@
 #include <iostream>
 #include "utils.h"
+#include "conjugate.h"
 
 int main()
 {
-    auto a = genAlphabet();
-    std::vector<std::string> word{"dalet", "vav", "yod", "dalet"};
-    auto unicodeWord = namesToUnicodeWord(word, a);
-    std::cout << unicodeWord << std::endl;
+    std::vector<std::string> word{"zayin", "kaf", "resh"};
+    conjugatePresentAndDisplay(word);
+    conjugatePastAndDisplay(word);
 }

@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Add conjbrew libs. TODO: write this more eloquently
 ADD_LIBRARY(ConjbrewLibs
+    ./src/conjugate.cpp
     ./src/utils.cpp
 )
 
