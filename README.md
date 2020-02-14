@@ -12,7 +12,23 @@ ConjBrew is a C++ library for conjugating Hebrew roots.
 
 ## Example
 
+Below is a code snippet using the library and then its output in a sample.txt file.
+
+```cpp
+#include "writer.h"
+
+int main()
+{
+    std::vector<Word> roots;
+    roots.push_back(std::vector<std::string>{"zayin", "kaf", "resh"});
+    
+    rootsToTxtHomework(roots, Tense::past, "17/02/2020");
+}
+```
+
 ```bash
+דיוד 17/02/2020
+
 Root:                         רכז
 1st Person Plural             ורכז
 1st Person Singular           יתרכז
