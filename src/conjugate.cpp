@@ -2,8 +2,6 @@
  * Robert Durst
  * me at robdurst dot com
  */
-#include <iostream>
-#include <iomanip>
 #include "conjugate.h"
 
 // note that words are in the correct Hebrew order, thus the left-most
@@ -84,41 +82,3 @@ std::vector<Word> conjugate(Word word, Tense t)
     }
 }
 
-// helper for pretty printing conjugated lines with labels
-void prettyPrint(std::string label, Word word, Alphabet a)
-{
-    std::cout << std::setw(30) << std::left << label << std::setw(5) << namesToUnicodeWord(word, a) << std::endl;
-}
-
-// here it is obvioud that I too tightly couple the conjugation
-// return indices with displaying... should be an unordered_map
-// in reality... TODO: fix this!
-void conjugatePastAndDisplay(Word word)
-{
-    auto a = genAlphabet();
-    auto conjugations = conjugate(word, Tense::past);
-    
-    prettyPrint("Root: ", word, a);
-    prettyPrint("1st Person Singular: ", conjugations[0], a);
-    prettyPrint("2nd Person Masculine: ", conjugations[1], a);
-    prettyPrint("2nd Person Feminine: ", conjugations[2], a);
-    prettyPrint("3rd Person Masculine: ", conjugations[3], a);
-    prettyPrint("3rd Person Feminine: ", conjugations[4], a);
-    prettyPrint("1st Person Plural: ", conjugations[5], a);
-    prettyPrint("2nd Person Plural Masculine: ", conjugations[6], a);
-    prettyPrint("2nd Person Plural Masculine: ", conjugations[7], a);
-    prettyPrint("3rd Person Plural: ", conjugations[8], a);
-}
-
-// TODO: fix for the same reason as above
-void conjugatePresentAndDisplay(Word word)
-{
-    auto a = genAlphabet();
-    auto conjugations = conjugate(word, Tense::present);
-
-    prettyPrint("Root: ", word, a);
-    prettyPrint("Singular Masculine: ", conjugations[0], a);
-    prettyPrint("Singular Feminine: ", conjugations[1], a);
-    prettyPrint("Plural Masculine: ", conjugations[2], a);
-    prettyPrint("Plural Feminine: ", conjugations[3], a);
-}

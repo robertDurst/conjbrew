@@ -1,3 +1,4 @@
+#pragma once
 /*
  * Robert Durst
  * me at robdurst dot com

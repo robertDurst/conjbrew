@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 ADD_LIBRARY(ConjbrewLibs
     ./src/conjugate.cpp
     ./src/utils.cpp
+    ./src/writer.cpp
 )
 
 add_executable(conjbrew ./src/main.cpp ${DirSOURCES})
