@@ -44,7 +44,9 @@ std::string namesToUnicodeWord(Word word, Alphabet alph)
     std::string retWord = "";
     for (auto letter: word)
     {
-        retWord = alph[letter] + retWord;
+        // NOTE!
+        // for some reason this will print, as expected in terminal, but display backwards literally everywhere else...
+        retWord = retWord + alph[letter];
     }
 
     return retWord;

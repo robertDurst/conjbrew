@@ -1,6 +1,6 @@
 # ConjBrew
 
-ConjBrew is a C++ library for conjugating Hebrew roots.
+ConjBrew is a C++ library for conjugating Hebrew roots. I used the following for my unicode map: https://en.wikipedia.org/wiki/Unicode_and_HTML_for_the_Hebrew_alphabet
 
 ## Build and Run Instructions
 
@@ -40,3 +40,4 @@ Root:                         רכז
 3rd Person Masculine          רכז
 3rd Person Plural             ורכז
 ```
+
