@@ -6,70 +6,71 @@
 
 // note that words are in the correct Hebrew order, thus the left-most
 // letter is index 0
-std::vector<Word> conjugatePresent(Word word)
+std::map<std::string, Word> conjugatePresent(Word word)
 {
+    std::map<std::string, Word> conjugations;
+
     // singular masculine (sm)
     // _ _ vav _
-    Word sm{ word[0], "vav", word[1], word[2] };
+    conjugations["Singular Masculine"] = Word{ word[0], "vav", word[1], word[2] };
     // singular feminine (sf)
     // tav _ _ vav _
-    Word sf{ word[0], "vav", word[1], word[2], "tav" };
+    conjugations["Singular Feminine"] = Word{ word[0], "vav", word[1], word[2], "tav" };
     // plural masculine (pm)
     // (final mem) yod _ _ vav _
-    Word pm{ word[0], "vav", word[1], word[2], "yod", "final mem" };
+    conjugations["Plural Masculine"] = Word{ word[0], "vav", word[1], word[2], "yod", "final mem" };
     // plural feminine (pf)
     //  tav vav _ _ vav _
-    Word pf{ word[0], "vav", word[1], word[2], "vav", "tav" };
-
-    std::vector<Word> conjugations { sm, sf, pm, pf };
+    conjugations["Plural Feminine"] = Word{ word[0], "vav", word[1], word[2], "vav", "tav" };
 
     return conjugations;
 }
 
-std::vector<Word> conjugatePast(Word word)
+std::map<std::string, Word> conjugatePast(Word word)
 {
+    std::map<std::string, Word> conjugations;
+
     // ani (a)
     // yod tav _ _ _
-    Word a{ word[0], word[1], word[2], "tav", "yod" };
+    conjugations["1st Person Singular"] = Word{ word[0], word[1], word[2], "tav", "yod" };
 
     // atah (atah)
     // tav _ _ _
-    Word atah{ word[0], word[1], word[2], "tav" };
+    conjugations["2nd Person Masculine"] = Word{ word[0], word[1], word[2], "tav" };
 
     // at (at)
     // tav _ _ _
-    Word at{ word[0], word[1], word[2], "tav" };
+    conjugations["2nd Person Feminine"] = Word{ word[0], word[1], word[2], "tav" };
     
     // who (who)
     // _ _ _
-    Word who{ word[0], word[1], word[2] };
+    conjugations["3rd Person Masculine"] = Word{ word[0], word[1], word[2] };
     
     // he (he)
     // he _ _ _
-    Word he{ word[0], word[1], word[2], "he" };
+    
+    conjugations["3rd Person Feminine"] = Word{ word[0], word[1], word[2], "he" };
 
     // anonchnu (an)
     // vav noon _ _ _
-    Word an{ word[0], word[1], word[2], "vav", "noon" };
+    conjugations["1st Person Plural"] =  Word{ word[0], word[1], word[2], "vav", "noon" };
 
     // atem (atem)
     // (final mem) tav _ _ _
-    Word atem{ word[0], word[1], word[2], "tav", "final mem" };
+    conjugations["2nd Person Plural Masculine"] = Word{ word[0], word[1], word[2], "tav", "final mem" };
     
     // aten (aten)
     // (final noon) tav _ _ _
-    Word aten{ word[0], word[1], word[2], "tav", "final noon" };
+    conjugations["2nd Person Plural Feminine"] = Word{ word[0], word[1], word[2], "tav", "final noon" };
     
     // hem/hen (hh)
     // vav _ _ _
-    Word hh{ word[0], word[1], word[2], "vav" };
-
-    std::vector<Word> conjugations{ a, atah, at, who, he, an, atem, aten, hh };
+    conjugations["3rd Person Plural"] = Word{ word[0], word[1], word[2], "vav" };
 
     return conjugations;
 }
 
-std::vector<Word> conjugate(Word word, Tense t)
+std::map<std::string, Word> conjugate(Word word, Tense t)
 {
     switch(t)
     {

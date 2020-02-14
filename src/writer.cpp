@@ -40,37 +40,30 @@ std::fstream openFile(std::string filename)
     return file;
 }
 
-// here it is obvioud that I too tightly couple the conjugation
-// return indices with displaying... should be an unordered_map
-// in reality... TODO: fix this!
 void conjugatePastAndDisplay(Word word, std::shared_ptr<std::fstream> file)
 {
     auto a = genAlphabet();
     auto conjugations = conjugate(word, Tense::past);
 
     prettyDisplay("Root: ", word, a, file);
-    prettyDisplay("1st Person Singular: ", conjugations[0], a, file);
-    prettyDisplay("2nd Person Masculine: ", conjugations[1], a, file);
-    prettyDisplay("2nd Person Feminine: ", conjugations[2], a,file);
-    prettyDisplay("3rd Person Masculine: ", conjugations[3], a, file);
-    prettyDisplay("3rd Person Feminine: ", conjugations[4], a, file);
-    prettyDisplay("1st Person Plural: ", conjugations[5], a, file);
-    prettyDisplay("2nd Person Plural Masculine: ", conjugations[6], a, file);
-    prettyDisplay("2nd Person Plural Masculine: ", conjugations[7], a, file);
-    prettyDisplay("3rd Person Plural: ", conjugations[8], a, file);
+
+    for (auto conjugation: conjugations)
+    {
+        prettyDisplay(conjugation.first, conjugation.second, a, file);
+    }
 }
 
-// TODO: fix for the same reason as above
 void conjugatePresentAndDisplay(Word word, std::shared_ptr<std::fstream> file)
 {
     auto a = genAlphabet();
     auto conjugations = conjugate(word, Tense::present);
 
     prettyDisplay("Root: ", word, a, file);
-    prettyDisplay("Singular Masculine: ", conjugations[0], a, file);
-    prettyDisplay("Singular Feminine: ", conjugations[1], a, file);
-    prettyDisplay("Plural Masculine: ", conjugations[2], a, file);
-    prettyDisplay("Plural Feminine: ", conjugations[3], a, file);
+    
+    for (auto conjugation: conjugations)
+    {
+        prettyDisplay(conjugation.first, conjugation.second, a, file);
+    }
 }
 
 void rootsToTxtHomework(std::vector<Word> roots, Tense t, std::string date)

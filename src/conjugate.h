@@ -6,9 +6,9 @@
  * conjugation methods that work through what Rabbi Isaacs calls the "programs"
  * or conjugation patterns
  */
-#include <vector>
+#include <map>
 #include "utils.h"
 
 enum class Tense { present, past };
 
-std::vector<Word> conjugate(Word, Tense);
+std::map<std::string, Word> conjugate(Word, Tense);
